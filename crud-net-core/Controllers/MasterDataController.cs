@@ -61,7 +61,7 @@ namespace crud_net_core.Controllers
 
             if (!cities.Any())
             {
-                NotFound("There are no states in database");
+                NotFound("There are no cities in database");
             }
 
             return Ok(cities);
