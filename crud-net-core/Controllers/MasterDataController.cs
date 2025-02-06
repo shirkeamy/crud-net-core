@@ -44,6 +44,27 @@ namespace crud_net_core.Controllers
             }
 
             return Ok(states);
+        } 
+
+        [HttpGet]
+        public ActionResult GetCities()
+        {
+            List<Cities> cities = new List<Cities>
+            {
+                new Cities { CityId = 1, CityName = "Mumbai" },
+                new Cities { CityId = 2, CityName = "Pune" },
+                new Cities { CityId = 3, CityName = "Nagpur" },
+                new Cities { CityId = 4, CityName = "Solapur" },
+                new Cities { CityId = 5, CityName = "Kolhapur" },
+                new Cities { CityId = 6, CityName = "Nanded" },
+            };
+
+            if (!cities.Any())
+            {
+                NotFound("There are no states in database");
+            }
+
+            return Ok(cities);
         }
     }
 }
