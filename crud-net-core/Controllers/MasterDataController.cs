@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace crud_net_core.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/master-data")]
     [ApiController]
     public class MasterDataController : ControllerBase
     {
         [HttpGet]
+        [Route("countries")]
         public ActionResult GetCountries()
         {
             List<Countries> countries = new List<Countries>
@@ -24,8 +25,9 @@ namespace crud_net_core.Controllers
 
             return Ok(countries);
         }
- 
+
         [HttpGet]
+        [Route("states")]
         public ActionResult GetStates()
         {
             List<States> states = new List<States>
@@ -44,9 +46,10 @@ namespace crud_net_core.Controllers
             }
 
             return Ok(states);
-        } 
+        }
 
         [HttpGet]
+        [Route("cities")]
         public ActionResult GetCities()
         {
             List<Cities> cities = new List<Cities>
