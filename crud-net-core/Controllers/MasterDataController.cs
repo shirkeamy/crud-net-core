@@ -24,5 +24,26 @@ namespace crud_net_core.Controllers
 
             return Ok(countries);
         }
+ 
+        [HttpGet]
+        public ActionResult GetStates()
+        {
+            List<States> states = new List<States>
+            {
+                new States { StateId = 1, StateName = "Andhra Pradesh" },
+                new States { StateId = 2, StateName = "Arunachal Pradesh" },
+                new States { StateId = 3, StateName = "Assam" },
+                new States { StateId = 4, StateName = "Karnataka" },
+                new States { StateId = 5, StateName = "Kerala" },
+                new States { StateId = 6, StateName = "Maharashtra" },
+            };
+
+            if (!states.Any())
+            {
+                NotFound("There are no states in database");
+            }
+
+            return Ok(states);
+        }
     }
 }
