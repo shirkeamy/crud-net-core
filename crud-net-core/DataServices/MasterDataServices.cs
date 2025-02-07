@@ -40,5 +40,30 @@ namespace crud_net_core.DataServices
             return countries;
         }
 
+        public List<States> GetStates()
+        {
+            List<States> states = new List<States>();
+            using (SqlCommand cmd = new SqlCommand("select * from States", sqlConnection))
+            {
+                cmd.CommandType = CommandType.Text;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        States state = new States
+                        {
+                            StateId = Convert.ToInt32(row["StateId"]),
+                            StateName = Convert.ToString(row["StateName"]),
+                        };
+                        states.Add(state);
+                    }
+                }
+            }
+            return states;
+        }
+
     }
 }
