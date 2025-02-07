@@ -11,7 +11,7 @@ namespace crud_net_core.DataServices
 
         public MasterDataServices()
         {
-            connection = "Data Source=SA-TECH;Initial Catalog=net-crud;Integrated Security=True";
+            connection = "Data Source=SA-TECH;Initial Catalog=net_crud;Integrated Security=True";
             sqlConnection = new SqlConnection(connection);
         }
 
