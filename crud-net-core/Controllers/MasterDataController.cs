@@ -32,19 +32,11 @@ namespace crud_net_core.Controllers
         [Route("states")]
         public ActionResult GetStates()
         {
-            List<States> states = new List<States>
-            {
-                new States { StateId = 1, StateName = "Andhra Pradesh" },
-                new States { StateId = 2, StateName = "Arunachal Pradesh" },
-                new States { StateId = 3, StateName = "Assam" },
-                new States { StateId = 4, StateName = "Karnataka" },
-                new States { StateId = 5, StateName = "Kerala" },
-                new States { StateId = 6, StateName = "Maharashtra" },
-            };
+            List<States> states = services.GetStates();
 
             if (!states.Any())
             {
-                NotFound("There are no states in database");
+                return NotFound("There are no states in database");
             }
 
             return Ok(states);
@@ -54,19 +46,11 @@ namespace crud_net_core.Controllers
         [Route("cities")]
         public ActionResult GetCities()
         {
-            List<Cities> cities = new List<Cities>
-            {
-                new Cities { CityId = 1, CityName = "Mumbai" },
-                new Cities { CityId = 2, CityName = "Pune" },
-                new Cities { CityId = 3, CityName = "Nagpur" },
-                new Cities { CityId = 4, CityName = "Solapur" },
-                new Cities { CityId = 5, CityName = "Kolhapur" },
-                new Cities { CityId = 6, CityName = "Nanded" },
-            };
+            List<Cities> cities = services.GetCities();
 
             if (!cities.Any())
             {
-                NotFound("There are no cities in database");
+                return NotFound("There are no cities in database");
             }
 
             return Ok(cities);

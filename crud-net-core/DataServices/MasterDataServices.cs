@@ -65,5 +65,30 @@ namespace crud_net_core.DataServices
             return states;
         }
 
+        public List<Cities> GetCities()
+        {
+            List<Cities> cities = new List<Cities>();
+            using (SqlCommand cmd = new SqlCommand("select * from Cities", sqlConnection))
+            {
+                cmd.CommandType = CommandType.Text;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        Cities city = new Cities
+                        {
+                            CityId = Convert.ToInt32(row["CityId"]),
+                            CityName = Convert.ToString(row["CityName"]),
+                        };
+                        cities.Add(city);
+                    }
+                }
+            }
+            return cities;
+        }
+
     }
 }
